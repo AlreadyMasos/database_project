@@ -24,8 +24,8 @@ class Database(metaclass=Singleton):
     def get_db(self):
         return self.db
 
-    def get_cursor(self, **kwargs):
-        return self.db.cursor(**kwargs)
+    def get_cursor(self):
+        return self.db.cursor()
 
     def commit(self):
         self.db.commit()
