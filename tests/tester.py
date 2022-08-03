@@ -1,8 +1,14 @@
 from framework.Endpoints.ApiPost import PostApi
 from framework.Endpoints.ApiUser import UserApi
+from database.database import Database
+from framework.utils.cfg_parser import ConfigParser
 
 
 def test_step():
+    cfg = ConfigParser().get_config()
+    db = Database(cfg['username'], cfg['password'], cfg['host'], cfg['port'])
+    db.connect()
+
     posts = PostApi()
     posts.get_posts()
     assert posts.check_if_json(), 'not json'
