@@ -12,4 +12,4 @@ def random_data_generator():
             'userId' : '1'}
 
 def create_random_int():
-    return int(str(randint(1,10)) + str(randint(1,10)))
+    return int(str(random.randint(1,10)) + str(random.randint(1,10)))

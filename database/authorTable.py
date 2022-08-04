@@ -14,4 +14,3 @@ class AuthorTable:
         data = (name, create_random_string(10), email)
         self.cursor.execute(query, data)
         self.db.commit()
-

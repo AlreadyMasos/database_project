@@ -1,3 +1,5 @@
+import random
+from framework.utils.random_utils import create_random_int
 
 
 class TableTest:
@@ -30,8 +32,18 @@ class TableTest:
         data = self.get_test_by('method_name', name)
         return len(data) >= 1
 
-    def get_with_repeating_nums_in_id(self, number):
-        query = "SELECT author, project_id FROM TEST WHERE ID = %s"
-        data = (number)
-        self.cursor.execute(query, data)
+    def get_with_repeating_nums_in_id(self, number=create_random_int()):
+        query = f"SELECT name, author_id, project_id FROM TEST WHERE ID LIKE '%{number}' LIMIT 10"
+        self.cursor.execute(query)
         show = self.cursor.fetchall()
+        return show
+
+    def update_authors(self):
+        query = f"UPDATE test SET author_id = {random.randint(1,4)}"
+        self.cursor.execute(query)
+        self.db.commit()
+
+    def delete_row(self, name):
+        query = f'DELETE FROM TEST WHERE name = {name}'
+        self.cursor.execute(query)
+        self.db.commit()
