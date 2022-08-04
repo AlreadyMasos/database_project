@@ -10,3 +10,6 @@ def random_data_generator():
     return {'body' : create_random_string(15),
             'title' : create_random_string(10),
             'userId' : '1'}
+
+def create_random_int():
+    return int(str(randint(1,10)) + str(randint(1,10)))
